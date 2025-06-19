@@ -1,5 +1,6 @@
 import time
 import random
+import asyncio  # Required for the delay in animation
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
@@ -30,6 +31,7 @@ from strings import get_string
 @LanguageStart
 async def start_pm(client, message: Message, _):
     await add_served_user(message.from_user.id)
+
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
@@ -85,6 +87,32 @@ async def start_pm(client, message: Message, _):
                     text=f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <b>ᴛʀᴀᴄᴋ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</b>.\n\n<b>ᴜsᴇʀ ɪᴅ :</b> <code>{message.from_user.id}</code>\n<b>ᴜsᴇʀɴᴀᴍᴇ :</b> @{message.from_user.username}",
                 )
     else:
+        # Start Animation Effect
+        baby = await message.reply_text("**__ᴅɪηɢ ᴅᴏηɢ.🥀__**")
+        stages = [
+            "ᴅɪηɢ ᴅᴏηɢ..🥀",
+            "ᴅɪηɢ ᴅᴏηɢ...🥀",
+            "ᴅɪηɢ ᴅᴏηɢ....🥀",
+            "ᴅɪηɢ ᴅᴏηɢ.....🥀",
+            "sᴛᴧʀᴛɪηɢ.❤️‍🔥",
+            "sᴛᴧʀᴛɪηɢ..❤️‍🔥",
+            "sᴛᴧʀᴛɪηɢ...❤️‍🔥",
+            "sᴛᴧʀᴛɪηɢ....❤️‍🔥",
+            "sᴛᴧʀᴛɪηɢ.....❤️‍🔥",
+            "ʙσᴛ sᴛᴧʀᴛєᴅ.💤",
+            "ʙσᴛ sᴛᴧʀᴛєᴅ..💤",
+            "ʙσᴛ sᴛᴧʀᴛєᴅ...💤",
+            "ʙσᴛ sᴛᴧʀᴛєᴅ....💤",
+            "ʙσᴛ sᴛᴧʀᴛєᴅ.....💤",
+        ]
+
+        for stage in stages:
+            await asyncio.sleep(0.4)
+            await baby.edit_text(f"**__{stage}__**")
+
+        await asyncio.sleep(1)
+        await baby.delete()
+
         out = private_panel(_)
         await message.reply_photo(
             photo=random.choice(START_IMG_URL),
