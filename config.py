@@ -44,7 +44,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 API_URL = getenv("API_URL", 'https://my-api-lc2j.onrender.com') #youtube song url
-API_KEY = getenv("API_KEY", 'zefron_api_key) # youtube song api ke
+API_KEY = getenv("API_KEY", 'zefron_api_key') # youtube song api ke
 
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
